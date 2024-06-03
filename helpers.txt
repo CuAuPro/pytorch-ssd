@@ -1,0 +1,7 @@
+python train_ssd.py --data=/data --checkpoint-folder=models/ --batch-size=64 --num-epochs=100
+
+python eval_ssd.py --net=mb1-ssd --trained_model=models/model.pth --dataset=data --dataset_type=voc --label_file=models/labels.txt
+
+python run_ssd_example.py mb1-ssd models/model.pth models/labels.txt data/test/<image_name>
+
+python onnx_export.py --net mb1-ssd --input models/model.pth --output models/model.onnx --labels=models/labels.txt
